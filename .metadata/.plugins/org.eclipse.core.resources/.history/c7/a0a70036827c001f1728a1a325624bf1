@@ -1,0 +1,11 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+//@Controller // View(html,jsp,thymelef)를 반환
+@RestController
+@RequestMapping("todo")
+public class TodoController {
+
+}

@@ -1,0 +1,15 @@
+package com.example.demo.di4;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+//코딩을 하려면 컴퓨터가 필요하다.
+@Component
+public class Coding {
+	@Autowired
+	private Computer computer;
+	
+	public Computer getComputer() {
+		return computer;
+	}
+}
