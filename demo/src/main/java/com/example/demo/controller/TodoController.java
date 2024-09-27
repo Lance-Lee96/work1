@@ -32,7 +32,7 @@ public class TodoController {
 	//ResponseEntity.ok().body(response)
 	
 //	@Autowired
-	@NonNull
+//	@NonNull
 	private final TodoService service;
 	
 	//아래의 메서드가 실행되기 위한 조건
