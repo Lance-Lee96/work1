@@ -18,7 +18,7 @@ public interface TodoRepository extends JpaRepository<TodoEntity, String> {
 	//JPA가 메서드의 이름을 파싱해서 SELECT * FROM Todo WHERE userId = '{userId}'와 같은
 	//쿼리를 작성해서 실행해준다.
 	//?1 : 메서드의 매개변수 순서 위치
-	@Query("SELECT * FROM TodoEntity t WHERE t.userId= ?1")
+	@Query("SELECT t FROM TodoEntity t WHERE t.userId= ?1")
 	List<TodoEntity> findByUserId(String userId);
 	
 	
