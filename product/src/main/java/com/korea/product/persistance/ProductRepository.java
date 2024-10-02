@@ -9,5 +9,5 @@ import com.korea.product.model.ProductEntity;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Integer>{
-	ProductEntity findById(String id);
+	
 }
