@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.UserEntity;
@@ -15,7 +16,7 @@ public class UserService {
 	@Autowired // 스프링이 UserRepository 타입의 bean을 자동으로 주입해준다.
 	private UserRepository repository;
 	
-	// 유저를 생성하는 메서드
+	// 유저를 생성하는 메서드 (db에 저장)
 	public UserEntity create(UserEntity userEntity) {
 		//주어진 userEntity가 null이거나 또는 username이 null인 경우 예외 발생
 		if(userEntity == null || userEntity.getUsername() == null) {
@@ -39,8 +40,14 @@ public class UserService {
 	}
 	
 	//주어진 username과 password로 UserEntity 조회화기
-	public UserEntity getByCredentials(String username, String password) {
-		return repository.findByUsernameAndPassword(username, password);
+	public UserEntity getByCredentials(String username, String password, PasswordEncoder encoder) {
+		//유저 정보 조회
+		final UserEntity originalUser =  repository.findByUsernameAndPassword(username, password);
+		//DB에 저장된 암호화된 비밀번호와 사용자에게 입력받아 전달된 암호화된 비밀번호를 비교
+		if(originalUser != null && encoder.matches(password, originalUser.getPassword())) {
+			return originalUser;
+		}
+		return null;
 	}
 	
 }
