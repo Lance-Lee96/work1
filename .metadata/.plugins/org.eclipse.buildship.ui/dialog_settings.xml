@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.buildship.ui.wizard.project.import">
-		<item key="project_location" value="D:\web0900_lsh\4.spring\work\exam"/>
+		<item key="project_location" value="C:\Users\admin\Documents\카카오톡 받은 파일\demo"/>
 		<item key="apply_working_sets" value="false"/>
 		<list key="working_sets">
 		</list>
