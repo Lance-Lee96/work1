@@ -1,5 +1,7 @@
 package com.korea.product.dto;
 
+import java.time.LocalDateTime;
+
 import com.korea.product.model.ProductEntity;
 
 import lombok.AllArgsConstructor;
@@ -7,27 +9,38 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class ProductDTO {
-	private int id;
-	private String name;
-	private String description;
-	private double price;
 	
-	public ProductDTO (final ProductEntity entity) {
-		this.id = entity.getId();
-		this.name = entity.getName();
-		this.description = entity.getDescription();
-		this.price = entity.getPrice();
+	private int productId;
+	private String productName;
+	private int productStock;
+	private int productPrice;
+	private LocalDateTime registerDate;
+	private LocalDateTime updateDate;
+	
+	public ProductDTO(ProductEntity entity) {
+		this.productId = entity.getProductId();
+		this.productName = entity.getProductName();
+		this.productStock = entity.getProductStock();
+		this.productPrice = entity.getProductPrice();
+		this.registerDate = entity.getRegisterDate();
+		this.updateDate = entity.getUpdateDate();
 	}
 	
 	public static ProductEntity toEntity(ProductDTO dto) {
-		return ProductEntity.builder().id(dto.getId())
-									  .name(dto.getName())
-									  .description(dto.getDescription())
-									  .price(dto.getPrice()).build();
+		return ProductEntity.builder()
+				.productId(dto.productId)
+				.productName(dto.productName)
+				.productStock(dto.productStock)
+				.productPrice(dto.productPrice)
+				.registerDate(dto.registerDate)
+				.updateDate(dto.updateDate)
+				.build();
 	}
+	
+	
 }
