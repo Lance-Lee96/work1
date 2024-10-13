@@ -7,12 +7,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResponseDTO<T> {
-
 	private String error;
 	private List<T> data;
 }
+
+
+
+
+

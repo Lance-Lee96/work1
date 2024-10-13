@@ -15,27 +15,33 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @Table(name="product")
 public class ProductEntity {
-	
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	@Id
-	private int productId;
-	private String productName;
-	private int productStock;
-	private int productPrice;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int productId;//상품id
+	private String productName; //상품이름
+	private int productStock; //상품재고
+	private int productPrice; //상품가격
 	
-	@CreationTimestamp //Insert 쿼리가 발생할 때 시간 값을 적용시켜준다.
-	private LocalDateTime registerDate;
+	@CreationTimestamp //Insert쿼리가 발생할 때 시간 값을 적용시켜준다.
+	private LocalDateTime registerDate;//등록날짜
 	
 	@UpdateTimestamp //Update쿼리가 발생했을 때 시간 값을 적용시켜준다.
 	//LocalDateTime.now() : 현재 시간을 저장
-	private LocalDateTime updateDate = LocalDateTime.now();
-	
+	private LocalDateTime updateDate = LocalDateTime.now();//수정날짜
 	
 }
+
+
+
+
+
+
+

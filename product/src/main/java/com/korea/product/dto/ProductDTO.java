@@ -10,11 +10,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductDTO {
-	
+
 	private int productId;
 	private String productName;
 	private int productStock;
@@ -22,6 +22,7 @@ public class ProductDTO {
 	private LocalDateTime registerDate;
 	private LocalDateTime updateDate;
 	
+	//Entity -> DTO
 	public ProductDTO(ProductEntity entity) {
 		this.productId = entity.getProductId();
 		this.productName = entity.getProductName();
@@ -31,16 +32,28 @@ public class ProductDTO {
 		this.updateDate = entity.getUpdateDate();
 	}
 	
+	//DTO -> Entity
 	public static ProductEntity toEntity(ProductDTO dto) {
 		return ProductEntity.builder()
-				.productId(dto.productId)
-				.productName(dto.productName)
-				.productStock(dto.productStock)
-				.productPrice(dto.productPrice)
-				.registerDate(dto.registerDate)
-				.updateDate(dto.updateDate)
+				.productId(dto.getProductId())
+				.productName(dto.getProductName())
+				.productStock(dto.getProductStock())
+				.productPrice(dto.getProductPrice())
+				.registerDate(dto.getRegisterDate())
+				.updateDate(dto.getUpdateDate())
 				.build();
 	}
-	
-	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
